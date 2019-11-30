@@ -1,0 +1,51 @@
+.cart {
+    padding: 10px;
+    border-radius: 0px 15px 0px 0px;
+}
+
+
+
+.mr-3 {
+    width: 20% !important;
+}
+
+.media {
+    padding: 5px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cashier {
+    width: 250px;
+}
+
+.cart-item {
+    height: 350px;
+    overflow-y: scroll;
+}
+
+.menu-item {
+    height: 465px;
+    overflow-y: scroll;
+}
+
+.detail {
+    background: #00704a;
+    color: white;
+    border-radius: 0px 0px 15px 0px;
+}
+
+.sorot:hover {
+    box-shadow: 1px 1px 6px 0px #00704b75;
+}
