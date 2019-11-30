@@ -6,25 +6,25 @@ let orderList = []
 let menuData = [{
         "category": "coffe",
         "name": "Espresso",
-        "price": 20000,
+        "price": 3000,
         "image": "https://pbs.twimg.com/profile_images/1000319614960787456/TLJU1nal_400x400.jpg"
     },
     {
         "category": "coffe",
         "name": "Latte",
-        "price": 22000,
+        "price": 6000,
         "image": "https://media-cdn.tripadvisor.com/media/photo-s/12/a6/a2/e0/loved-the-latte-art.jpg"
     },
     {
         "category": "coffe",
         "name": "Cappucinno",
-        "price": 22000,
+        "price": 6000,
         "image": "https://media-cdn.tripadvisor.com/media/photo-s/12/a6/a2/e0/loved-the-latte-art.jpg"
     },
     {
         "category": "coffe",
-        "name": "Cappucinno",
-        "price": 22000,
+        "name": "Ice Coffe",
+        "price": 8000,
         "image": "https://media-cdn.tripadvisor.com/media/photo-s/12/a6/a2/e0/loved-the-latte-art.jpg"
     }
 ]
@@ -103,16 +103,17 @@ function LoopOrder() {
         $("#orderHolder").append('<div class="media p-2 mb-1"> <img src="' + orderList[i].getimage + '" class="mr-3" alt="..."> <div class="media-body"> <h5 class="mt-0 mb-0">' + orderList[i].getname + '</h5> <p style="margin: 0">Rp <span id="harga">' + orderList[i].getprice + '</span></p> <span class="badge badge-success">x' + orderList[i].getqty + '</span> </div> <div> <br> <h5 class="mb-0 mr-1">Rp <span id="totalQty">' + (orderList[i].getprice * orderList[i].getqty) + '</span></h5> </div> <div class="destroy"> <i style="color: brown" class="fas fa-times fa-lg"></i></div> </div>');
     }
     Count()
+    OnDelete();
 }
 
-$("#orderHolder").on('click', ".destroy", function () {
+function OnDelete() {
     for (let position = 0; position < $(".destroy").length; position++) {
         $(`.destroy:eq(${position})`).on('click', function () {
             orderList.splice(position, 1)
             LoopOrder()
         })
     }
-})
+}
 
 function Count() {
     if (orderList.length >= 1) {
