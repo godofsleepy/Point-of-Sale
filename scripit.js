@@ -103,13 +103,19 @@ function LoopOrder() {
         $("#orderHolder").append('<div class="media p-2 mb-1"> <img src="' + orderList[i].getimage + '" class="mr-3" alt="..."> <div class="media-body"> <h5 class="mt-0 mb-0">' + orderList[i].getname + '</h5> <p style="margin: 0">Rp <span id="harga">' + orderList[i].getprice + '</span></p> <span class="badge badge-success">x' + orderList[i].getqty + '</span> </div> <div> <br> <h5 class="mb-0 mr-1">Rp <span id="totalQty">' + (orderList[i].getprice * orderList[i].getqty) + '</span></h5> </div> <div class="destroy"> <i style="color: brown" class="fas fa-times fa-lg"></i></div> </div>');
     }
     Count()
+    click()
 }
 
-$("#orderHolder").on('click', ".destroy", function () {
-    let position = $(".destroy").length
-    orderList.splice(position - 1, 1)
-    LoopOrder()
-})
+function click() {
+    if (orderList.length > 0) {
+        for (let position = 0; position < $(".destroy").length; position++) {
+            $(`.destroy:eq(${position})`).on('click', function () {
+                orderList.splice(position, 1)
+                LoopOrder()
+            })
+        }
+    }
+}
 
 function Count() {
     if (orderList.length >= 1) {
@@ -120,7 +126,7 @@ function Count() {
             rawCount += price * qty
         }
         let tax = rawCount * 10 / 100
-        let totalCount = rawCount - tax
+        let totalCount = rawCount + tax
 
         $("#subTotal").text(rawCount)
         $("#tax").text(tax)
