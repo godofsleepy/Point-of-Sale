@@ -83,8 +83,8 @@
             <div class="text-center">
                 <div class="p-1 bd-highlight mt-1">
                     <div class="btn-group text-center">
-                        <button type="button" id="payment" class="btn-lg cashier btn-success disabled"
-                            aria-haspopup="true" aria-expanded="false">
+                        <button type="button" id="payment" class="btn-lg cashier btn-success" data-toggle="modal"
+                            data-target="#exampleModalScrollable" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-print"></i> Payment
                         </button>
                     </div>
@@ -100,22 +100,22 @@
                     <div style="font-size: 15px;" class="input-group-prepend">
                         <button style="background: white;border:solid 1px #00704a;color: #00704a"
                             class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Category</button>
+                            aria-haspopup="true" aria-expanded="false" id="category-selected">All</button>
                         <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">All</a>
                             <a class="dropdown-item" href="#">Coffe</a>
                             <a class="dropdown-item" href="#">Bread</a>
-                            <a class="dropdown-item" href="#"></a>
-                            <div role="separator" class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
+                            <a class="dropdown-item" href="#">Donut</a>
                         </div>
                     </div>
                     <!-- Search Input -->
-                    <input style="border:solid 1px #00704a;color: black" type="text" class="form-control"
+                    <input id="searchInput" style="border:solid 1px #00704a;color: black" type="text" class="form-control"
                         placeholder="Enter Keyword" aria-label="Text input with dropdown button">
                     <!-- Button Search -->
                     <div class="input-group-append">
-                        <button style="border:solid 1px #00704a" class="bg-success btn btn-outline-secondary"
-                            type="button" id="button-addon2"><i style="color: white" class="fas fa-search"></i></button>
+                        <button style="border:solid 1px #00704a" id="search"
+                            class="bg-success btn btn-outline-secondary" type="button" id="button-addon2"><i
+                                style="color: white" class="fas fa-search"></i></button>
                     </div>
                 </div>
             </div>
@@ -129,18 +129,69 @@
 
                 </div>
                 <!-- Menu Item -->
-                <div class="menu-item mt-3">
+                <div id="menuHolder" class="menu-item mt-3">
+
+                    <!-- List Coffe -->
                     <div>
                         <h2 class="pl-4">Coffe</h2>
-                        <!-- List Coffe -->
-                        <div id="menuHolder" class="row p-2 pl-4 pr-4">
+                        <div id="coffeHolder" class="row p-2 pl-4 pr-4">
                             <!-- Place Holder -->
                         </div>
                     </div>
 
+                    <!-- List Bread -->
+                    <div>
+                        <h2 class="pl-4">Bread</h2>
+                        <div id="breadHolder" class="row p-2 pl-4 pr-4">
+                            <!-- Place Holder -->
+                        </div>
+                    </div>
+
+                    <!-- Lis Donuts -->
+                    <div>
+                        <h2 class="pl-4">Donut</h2>
+                        <div id="donutHolder" class="row p-2 pl-4 pr-4">
+                            <!-- Place Holder -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">Invoice</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="invoiceHolder" class="modal-body">
+                    </div>
+                    <div style="display:inline-block; text-align:end" class="modal-footer">
+                        <div class="d-flex">
+                            <div class="col-sm" style="text-align: start;">
+                                <h6 class="mr-0">Cashier : HachiAnd</h6>
+                                <h6 class="mr-0">Status : Dine In</h6>
+                            </div>
+                            <div class="col-sm" style="text-align: end;">
+                                <h6 class="mr-0">Subtotal : Rp <span id="MSubTotal"></span></h6>
+                                <h6 class="mr-0">Tax : Rp <span id="MTax"></span></h6>
+                                <h6 class="mr-0">Total : Rp <span id="MTotal"></span></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="number" min="1" placeholder="Masukkan Uang">
+                        <button type="button" id="btnPay" class="btn-lg btn-success">Pay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

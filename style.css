@@ -3,10 +3,16 @@
     border-radius: 0px 15px 0px 0px;
 }
 
-
-
 .mr-3 {
     width: 20% !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 .media {
